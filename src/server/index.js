@@ -1,7 +1,7 @@
 import express from 'express';
 import React from 'react';
-import { renderToString } from 'react-dom/server';
-import App from '../shared/App/index';
+import { renderToString, renderToStaticMarkup } from 'react-dom/server';
+import App from '../client/App/index';
 
 const app = express();
 

@@ -82,7 +82,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom_server__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom_server___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_App_index__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__client_App_index__ = __webpack_require__(4);
 var _jsxFileName = '/home/secret/projects/js/reactjs-ssr/src/server/index.js',
     _this = this;
 
@@ -96,7 +96,7 @@ var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static("public"));
 
 app.get("*", function (req, res) {
-  res.send('\n      <!DOCTYPE html>\n      <head>\n        <title>Universal Reacl</title>\n        <link rel="stylesheet" href="/css/main.css">\n        <script src="/bundle.js" defer></script>\n      </head>\n\n      <body>\n        <div id="root">' + Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__shared_App_index__["a" /* default */], {
+  res.send('\n      <!DOCTYPE html>\n      <head>\n        <title>Universal Reacl</title>\n        <link rel="stylesheet" href="/css/main.css">\n        <script src="/bundle.js" defer></script>\n      </head>\n\n      <body>\n        <div id="root">' + Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__client_App_index__["a" /* default */], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 20
@@ -128,12 +128,14 @@ module.exports = require("react-dom/server");
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__logo_svg__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__logo_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__logo_svg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_css__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Row__ = __webpack_require__(7);
-var _jsxFileName = '/home/secret/projects/js/reactjs-ssr/src/shared/App/index.js';
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_range__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_range___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_range__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__logo_svg__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__logo_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__logo_svg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__App_css__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__App_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__App_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Row__ = __webpack_require__(8);
+var _jsxFileName = '/home/secret/projects/js/reactjs-ssr/src/client/App/index.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -142,6 +144,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -166,41 +169,34 @@ var App = function (_Component) {
         'div',
         { className: 'App', __source: {
             fileName: _jsxFileName,
-            lineNumber: 11
+            lineNumber: 12
           },
           __self: this
         },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          { className: 'App-header', __source: {
-              fileName: _jsxFileName,
-              lineNumber: 12
-            },
-            __self: this
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'App-header', __source: {
+            fileName: _jsxFileName,
+            lineNumber: 13
           },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_1__logo_svg___default.a, className: 'App-logo', alt: 'Logo', __source: {
-              fileName: _jsxFileName,
-              lineNumber: 13
-            },
-            __self: this
-          })
-        ),
+          __self: this
+        }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'App-body', __source: {
               fileName: _jsxFileName,
-              lineNumber: 15
+              lineNumber: 16
             },
             __self: this
           },
-          [{ name: 'Row 1' }].map(function (row) {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Row__["a" /* default */], Object.assign({}, row, {
+          __WEBPACK_IMPORTED_MODULE_1_lodash_range___default()(50).map(function (row) {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Row__["a" /* default */], {
+              key: row,
+              name: 'Row-' + row,
               __source: {
                 fileName: _jsxFileName,
-                lineNumber: 18
+                lineNumber: 19
               },
               __self: _this2
-            }));
+            });
           })
         )
       );
@@ -216,79 +212,60 @@ var App = function (_Component) {
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = "/media/logo.svg";
+module.exports = require("lodash/range");
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports) {
 
-
+module.exports = "/media/logo.svg";
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Row_css__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Row_css__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Row_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Row_css__);
-var _jsxFileName = '/home/secret/projects/js/reactjs-ssr/src/shared/Row/index.js';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+var _jsxFileName = '/home/secret/projects/js/reactjs-ssr/src/client/Row/index.js',
+    _this = this;
 
 
 
 
 
-var Row = function (_Component) {
-	_inherits(Row, _Component);
-
-	function Row() {
-		_classCallCheck(this, Row);
-
-		return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).apply(this, arguments));
-	}
-
-	_createClass(Row, [{
-		key: 'render',
-		value: function render() {
-			var name = this.props.name;
-
-			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				'div',
-				{ className: 'Row', __source: {
-						fileName: _jsxFileName,
-						lineNumber: 11
-					},
-					__self: this
-				},
-				name
-			);
-		}
-	}]);
-
-	return Row;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* harmony default export */ __webpack_exports__["a"] = (Row);
+/* harmony default export */ __webpack_exports__["a"] = (function (_ref) {
+	var name = _ref.name;
+	return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+		'span',
+		{ className: 'Row', __source: {
+				fileName: _jsxFileName,
+				lineNumber: 7
+			},
+			__self: _this
+		},
+		name
+	);
+});
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = require("prop-types");
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 

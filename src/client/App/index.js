@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import range from 'lodash/range';
 import logo from './logo.svg';
 import './App.css';
 import Row from '../Row';
@@ -10,12 +11,15 @@ export default class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="Logo"/>
+          {/* <img src={logo} className="App-logo" alt="Logo"/> */}
         </div>
         <div className="App-body">
           {
-            [{name:'Row 1'}].map((row) => (
-              <Row {...row} />
+            range(50).map((row) => (
+              <Row
+                key={row}
+                name={`Row-${row}`}
+              />
             ))
           }
         </div>

@@ -4,8 +4,8 @@ const autoprefixer = require("autoprefixer");
 const nodeExternals = require('webpack-node-externals');
 
 
-const browserConfig = {
-  entry: "./src/browser/index.js",
+const client = {
+  entry: "./src/client/index.js",
   output: {
     path: __dirname,
     filename: "./public/bundle.js"
@@ -51,13 +51,13 @@ const browserConfig = {
   ]
 };
 
-const serverConfig = {
+const server = {
   entry: "./src/server/index.js",
   target: 'node',
   externals: [nodeExternals()],
   output: {
     path: __dirname,
-    filename: "server.js",
+      filename: "server.js",
     libraryTarget: "commonjs2"
   },
   devtool: "cheap-module-source-map",
@@ -68,7 +68,7 @@ const serverConfig = {
         loader: "file-loader",
         options: {
           name: "public/media/[name].[ext]",
-          publicPath: url => url.replace(/public/, ""),
+          publicPath: url => url.replace(/public/, ''),
           emit: false
         }
       },
@@ -90,4 +90,4 @@ const serverConfig = {
   }
 };
 
-module.exports = [browserConfig, serverConfig];
+module.exports = [client, server];
