@@ -57,7 +57,7 @@ const server = {
   externals: [nodeExternals()],
   output: {
     path: __dirname,
-      filename: "server.js",
+    filename: "server.js",
     libraryTarget: "commonjs2"
   },
   devtool: "cheap-module-source-map",
