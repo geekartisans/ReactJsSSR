@@ -1,9 +1,10 @@
 import express from 'express';
 import React from 'react';
-import { renderToString, renderToStaticMarkup } from 'react-dom/server';
-import App from '../client/App/index';
+import { renderToString } from 'react-dom/server';
+import App from 'App';
 
 const app = express();
+const port = process.env.PORT || 8000;
 
 app.use(express.static("public"));
 
@@ -11,7 +12,7 @@ app.get("*", (req, res) => {
   res.send(`
       <!DOCTYPE html>
       <head>
-        <title>Universal Reacl</title>
+        <title>Universal Reacе.js app.</title>
         <link rel="stylesheet" href="/css/main.css">
         <script src="/bundle.js" defer></script>
       </head>
@@ -23,7 +24,6 @@ app.get("*", (req, res) => {
   `);
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("Server is listening");
+app.listen(port, () => {
+  console.log(`Server is listening on localhost:${port}`);
 });
-

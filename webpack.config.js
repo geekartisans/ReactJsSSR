@@ -2,10 +2,11 @@ const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 const nodeExternals = require('webpack-node-externals');
+const { resolve } = require('path');
 
 
 const client = {
-  entry: "./src/client/index.js",
+  entry: "./src/index.js",
   output: {
     path: __dirname,
     filename: "./public/bundle.js"
@@ -48,11 +49,17 @@ const client = {
     new ExtractTextPlugin({
       filename: "public/css/[name].css"
     })
-  ]
+  ],
+  resolve: {
+    modules: [
+      resolve(process.cwd() , 'src'),
+      resolve(process.cwd(), 'node_modules')
+    ],
+  },
 };
 
 const server = {
-  entry: "./src/server/index.js",
+  entry: "./src/server.js",
   target: 'node',
   externals: [nodeExternals()],
   output: {
@@ -87,7 +94,13 @@ const server = {
         query: { presets: ["react-app"] }
       }
     ]
-  }
+  },
+  resolve: {
+    modules: [
+      resolve(process.cwd(), 'src'),
+      resolve(process.cwd(), 'node_modules')
+    ],
+  },
 };
 
-module.exports = [client, server];
+module.exports = [server, client];
