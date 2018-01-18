@@ -52,8 +52,8 @@ const client = {
   ],
   resolve: {
     modules: [
-      resolve(process.cwd() , 'src'),
-      resolve(process.cwd(), 'node_modules')
+      resolve(process.cwd(), 'node_modules'),
+      resolve(process.cwd(), 'src'),
     ],
   },
 };
@@ -97,8 +97,8 @@ const server = {
   },
   resolve: {
     modules: [
+      resolve(process.cwd(), 'node_modules'),
       resolve(process.cwd(), 'src'),
-      resolve(process.cwd(), 'node_modules')
     ],
   },
 };
