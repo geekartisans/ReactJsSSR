@@ -64,7 +64,9 @@
   }
 
   .App {
-    
+    max-width: 1200px;
+    margin: auto;
+    background: #ccc;
   }
 
   .App-header {
@@ -78,6 +80,26 @@
     animation: spin 4s infinite linear;
   }
 
+  .Nav {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    padding: 0 50px;
+    background: #357fa2;
+    color: #fff;
+  }
+
+  .Navitem {
+    flex-basis: 200px;
+    padding: 15px 0px;
+  }
+
+  .Navlink {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
   @keyframes spin {
     0%  { transform: rotate(0deg);}
     100% { transform: rotate(360deg);}   

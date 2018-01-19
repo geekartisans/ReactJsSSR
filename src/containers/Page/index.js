@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 
-function Main (props) {
+function Page(props) {
   return (
-    <div>Main Component</div>
+    <div>Page Component</div>
   );
 }
 
-export default connect()(Main);
+export default connect()(Page);

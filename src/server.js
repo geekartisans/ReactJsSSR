@@ -4,7 +4,7 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux';
 import StaticRouter from 'react-router-dom/StaticRouter';
-import App from './App';
+import App from './containers/App';
 import reducers from './reducers';
 
 
@@ -18,25 +18,25 @@ app.listen(port, () => {
   console.log(`Server is listening on http://localhost:${port}`);
 });
 
-
 function handleRender(req, res) {
   // Create a new Redux store instance
-  const store = createStore(reducers)
+  const store = createStore(reducers);
+  const context = {};
 
   // Render the component to a string
   const html = renderToString(
     <Provider store={store}>
-      <StaticRouter location={req.url} context={{}}>
+      <StaticRouter location={req.url} context={context}>
         <App />
       </StaticRouter>
     </Provider>
   );
 
   // Grab the initial state from our Redux store
-  const preloadedState = store.getState()
+  const preloadedState = store.getState();
 
   // Send the rendered page back to the client
-  res.send(renderFullPage(html, preloadedState))
+  res.send(renderFullPage(html, preloadedState));
 }
 
 function renderFullPage(html, preloadedState) {
