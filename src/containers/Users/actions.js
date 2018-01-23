@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 export const REQUEST_USERS = '@containsers/Users/REQUEST_USERS';
 export const SUCCESS_USERS = '@containsers/Users/SUCCESS_USERS';
 export const FAILED_USERS = '@containsers/Users/FAILED_USERS';
@@ -22,4 +24,12 @@ export function failedUsers(error) {
   }
 }
 
-
+export const fetchUsers = () => (dispatch) => {
+  return fetch('http://localhost:8000/api.json')
+    .then(res => {
+      return res.json();
+    })
+    .then(users => {
+      dispatch(successUsers(users));
+    })
+}

@@ -4,15 +4,12 @@ import { hydrate } from 'react-dom'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { createLogger } from 'redux-logger'
+import thunk from 'redux-thunk';
 
-
-import { Route } from 'react-router'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import { Link } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory'
 
-import Main from './containers/Main';
-import Page from './containers/Page';
 import App from './containers/App';
 import reducers from './reducers';
 
@@ -33,6 +30,7 @@ const store = createStore(
   reducers,
   preloadedState,
   applyMiddleware(
+    thunk,
     middleware,
     logger,
   )

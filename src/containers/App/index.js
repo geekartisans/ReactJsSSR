@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Route, Switch, Link } from 'react-router-dom';
+
+
 import logo from './logo.svg';
 import './App.css';
+
+import routes from 'routes';
 
 import Main from 'containers/Main';
 import Page from 'containers/Page';
@@ -19,7 +23,7 @@ export default class App extends Component {
                 <Link to="/" className="Navlink">Index</Link>
               </li>
               <li className="Navitem">
-                <Link to="/page1" className="Navlink">Page 1</Link>
+                <Link to="/page" className="Navlink">Page</Link>
               </li>
               <li className="Navitem">
                 <Link to="/users" className="Navlink">Users</Link>
@@ -27,11 +31,17 @@ export default class App extends Component {
             </ul>
           </nav>
           <Switch>
-            <Route exact path="/" component={Main}/>
-            <Route path="/page1" component={Page}/>
-            <Route path="/users" component={Users}/>
+            {
+              routes.map((route, key) => (
+                <Route {...route} key={key} />
+              ))
+            }
           </Switch>
       </div>
     );
   }
 }
+
+{/* <Route exact path="/" component={Main}/> */}
+{/* <Route path="/page" component={Page}/> */}
+{/* <Route path="/users" component={Users}/> */}

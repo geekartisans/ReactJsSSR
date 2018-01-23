@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { requestUsers } from './actions';
+import { fetchUsers } from './actions';
 
 
 class Users extends Component {
-  componentWillMount() {
-    const { users, onLoad } = this.props;
-    if (!users.length) onLoad();
+  static getInitialProps({ req, store }) {
+    return store.dispatch(fetchUsers());
   }
-  
   render() {
     const { users = [] } = this.props;
     
     return (
       <div>
+        <div>Users</div>
         <ul>
           {
-            users.map((user) => {
+            users.map((user, key) => {
               return (
-                <li>{user.name}</li>
+                <li key={key}>{user.name}</li>
               );
             })
           }
