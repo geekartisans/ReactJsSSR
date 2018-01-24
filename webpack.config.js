@@ -2,10 +2,11 @@ const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 const nodeExternals = require('webpack-node-externals');
+const { resolve } = require('path');
 
 
-const browserConfig = {
-  entry: "./src/browser/index.js",
+const client = {
+  entry: "./src/index.js",
   output: {
     path: __dirname,
     filename: "./public/bundle.js"
@@ -48,10 +49,16 @@ const browserConfig = {
     new ExtractTextPlugin({
       filename: "public/css/[name].css"
     })
-  ]
+  ],
+  resolve: {
+    modules: [
+      resolve(process.cwd(), 'node_modules'),
+      resolve(process.cwd(), 'src'),
+    ],
+  },
 };
 
-const serverConfig = {
+const server = {
   entry: "./src/server/index.js",
   target: 'node',
   externals: [nodeExternals()],
@@ -68,7 +75,7 @@ const serverConfig = {
         loader: "file-loader",
         options: {
           name: "public/media/[name].[ext]",
-          publicPath: url => url.replace(/public/, ""),
+          publicPath: url => url.replace(/public/, ''),
           emit: false
         }
       },
@@ -87,7 +94,13 @@ const serverConfig = {
         query: { presets: ["react-app"] }
       }
     ]
-  }
+  },
+  resolve: {
+    modules: [
+      resolve(process.cwd(), 'node_modules'),
+      resolve(process.cwd(), 'src'),
+    ],
+  },
 };
 
-module.exports = [browserConfig, serverConfig];
+module.exports = [server, client];

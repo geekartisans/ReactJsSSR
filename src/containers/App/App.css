@@ -53,35 +53,54 @@
   }
 
   input, select {
-      vertical-align:middle;
+    vertical-align:middle;
   }
 
   body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    /* background: rgb(0, 0, 0); */
   }
 
   .App {
-    padding: 10px 20px;
-  }
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
+    max-width: 1200px;
+    margin: auto;
+    background: #ccc;
   }
 
   .App-header {
-
+    display: flex;
+    justify-content: center;
   }
 
-  .App-header input[type="text"] {
-    height: 25px;  
-    width: 100%;
-    padding: 0 5px;
-    font-size: 16px;
+  .App-logo {
+    width: 200px; 
+    height: 200px;
+    animation: spin 4s infinite linear;
   }
 
-  .App-body {
-    padding-top: 10px;
+  .Nav {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    padding: 0 50px;
+    background: #357fa2;
+    color: #fff;
+  }
+
+  .Navitem {
+    flex-basis: 200px;
+    padding: 15px 0px;
+  }
+
+  .Navlink {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  @keyframes spin {
+    0%  { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}   
   }
