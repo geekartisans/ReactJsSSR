@@ -5,10 +5,10 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux';
 import  { StaticRouter, matchPath } from 'react-router-dom';
 import thunk from 'redux-thunk';
-import App from './containers/App';
-import reducers from './reducers';
-import routes from './routes';
-
+import App from 'containers/App';
+import reducers from 'reducers';
+import routes from 'routes';
+import { match } from './utils';
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -20,12 +20,12 @@ app.get('/favicon.ico', function(req, res) {
 app.use(express.static("public"));
 app.use(handleRender)
 
-app.listen(port, () => {
+app.listen(port, (err) => {
+  if (err) console.log('Error: ', err);
   console.log(`Server is listening on http://localhost:${port}`);
 });
 
 function handleRender(req, res) {
-  console.log('handleRender');
   // Create a new Redux store instance
   const store = createStore(
     reducers,
@@ -34,31 +34,31 @@ function handleRender(req, res) {
 
   const context = {};
 
-  const promises = [];
-
-  routes.some(route => {
-    // use `matchPath` here
-    const match = matchPath(req.url, route)
-    if (match)
-      promises.push(route.component.WrappedComponent.getInitialProps({ req, store }))
-    return match
-  });
+  const promises = match(req.url, routes)
+    .map(
+      (loader) => loader({ req, dispatch: store.dispatch })
+    );
 
   return Promise.all(promises).then((data) => {
+
     const context = {};
 
     // Render the component to a string
     const html = renderToString(
       <Provider store={store}>
-        <StaticRouter location={req.url} context={context}>
+        <StaticRouter
+          location={req.url}
+          context={context}
+        >
           <App />
         </StaticRouter>
       </Provider>
     );
-    
+
     if (context.status === 404) {
       res.status(404);
     }
+
     if (context.status === 302) {
       return res.redirect(302, context.url);
     }

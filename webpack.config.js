@@ -59,7 +59,7 @@ const client = {
 };
 
 const server = {
-  entry: "./src/server.js",
+  entry: "./src/server/index.js",
   target: 'node',
   externals: [nodeExternals()],
   output: {

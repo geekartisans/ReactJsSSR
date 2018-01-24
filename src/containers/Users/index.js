@@ -4,8 +4,12 @@ import { fetchUsers } from './actions';
 
 
 class Users extends Component {
-  static getInitialProps({ req, store }) {
-    return store.dispatch(fetchUsers());
+  static getInitialProps({ req, dispatch }) {
+    return dispatch(fetchUsers());
+  }
+  componentDidMount() {
+    const { users, dispatch } = this.props;
+    if (!users.length) dispatch(fetchUsers());
   }
   render() {
     const { users = [] } = this.props;
